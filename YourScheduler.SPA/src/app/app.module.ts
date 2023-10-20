@@ -5,18 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainBodyComponent } from './Components/main-body/main-body.component';
 import { LoginComponent } from './Components/login/login.component';
-import { AuthorizationComponent } from './Shared/Models/authorization/authorization.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainBodyComponent,
-    LoginComponent,
-    AuthorizationComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
