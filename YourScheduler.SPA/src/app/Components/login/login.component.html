@@ -6,14 +6,14 @@
         <h5>Witaj w <strong>YourScheduler!</strong></h5>
         <p class="card-text">Zaloguj się używając swojego adresu email oraz hasła, które nadałeś przy rejestracji.</p>
     </div>
-    <form class="p-3">
+    <form class="p-3" #loginForm="ngForm">
         <div class="form-group lead">
             <label for="InputEmail" class="p-1">Adres e-mail</label>
-            <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Wpisz swój adres e-mail">
+            <input ngModel name="email" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Wpisz swój adres e-mail">
         </div>
         <div class="form-group lead">
             <label for="InputPass" class="p-1">Hasło</label>
-            <input type="password" class="form-control" id="InputPass" placeholder="Wpisz hasło, min. 8 znaków">
+            <input ngModel name="password" type="password" class="form-control" id="InputPass" placeholder="Wpisz hasło, min. 8 znaków">
         </div>
         <div class="d-grid p-5">
             <button type="submit" class="btn btn-warning" style="--bs-btn-color: #000;"><strong>Zaloguj się</strong></button>
