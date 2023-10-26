@@ -1,11 +1,9 @@
         .loginbox
+        {
+            max-height: 200px;
+        }
+        .borderCard
         {   
-            min-height: 500px;
-            max-width: 450px;
             border: 2px solid #999;
 
-        }
-        .foto
-        {
-            max-width: 150px;
         }
