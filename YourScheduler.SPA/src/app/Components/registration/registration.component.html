@@ -6,26 +6,59 @@
         <p class="card-text">Zarejestruj się i zacznij organizować czas swój i swojego teamu </p>
             <p>z <strong>YourScheduler</strong></p>
     </div>
-    <form class="p-3" #loginForm="ngForm">
+    <form class="p-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off">
         <div class="form-group lead">
-            <label for="InputEmail" class="p-1">Adres e-mail</label>
-            <input name="email" ngModel [class.is-invalid]="email.touched && email.invalid" #email="ngModel" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required type="email" class="form-control"  id="InputEmail" aria-describedby="emailHelp" placeholder="Wpisz swój adres e-mail">
-            <small class="text-danger" *ngIf="email.touched && email.errors">  Niepoprawny adres email</small>
+            <label for="email" class="p-1">Adres e-mail</label>
+            <input name="email" formControlName="email" 
+            type="email" class="form-control"  aria-describedby="emailHelp" 
+            placeholder="Wpisz swój adres e-mail"
+            [class.is-invalid]="(registerForm.get('email')?.hasError('required') || registerForm.get('email')?.hasError('email')) && registerForm.get('email')?.touched">
+            <div *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched">
+                <small class="text-danger"> Email jest wymagany</small>
+            </div>
+            <div *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched">
+                <small class="text-danger"> Niepoprawny adres email.</small>
+            </div>
         </div>
         <div class="form-group lead">
             <label for="InputPass" class="p-1">Hasło</label>
-            <input ngModel name="password" type="password" class="form-control" id="InputPass" placeholder="Wpisz hasło, min. 8 znaków">
+            <input name="password" formControlName="password" type="password" class="form-control"  placeholder="Wpisz hasło, min. 8 znaków"
+            [class.is-invalid]="(registerForm.get('password')?.hasError('required') || registerForm.get('password')?.hasError('pattern')) && registerForm.get('password')?.touched">
+            <div *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched">
+                <small class="text-danger"> Hasło jest wymagane</small>
+            </div>
+            <div *ngIf="registerForm.get('password')?.hasError('minlength') && registerForm.get('password')?.touched">
+                <small class="text-danger"> Hasło musi mieć przynajmniej 8 znaków</small>
+            </div>
+            <div *ngIf="registerForm.get('password')?.hasError('pattern') && registerForm.get('password')?.touched">
+                <small class="text-danger"> Hasło musi zawierać przynajmniej: 1 małą literą, 1 dużą literę i jedną cyfrę</small>
+            </div>
         </div>
         <div class="form-group lead">
             <label for="InputPass" class="p-1">Powtórz hasło</label>
-            <input ngModel name="password" type="password" class="form-control" id="InputPass" placeholder="">
+            <input formControlName="confirmPassword" type="password" class="form-control"  placeholder=""
+            [class.is-invalid]="(registerForm.get('confirmPassword')?.hasError('required') || registerForm.errors?.['passwordmatcherror']) && registerForm.get('confirmPassword')?.touched">
+            <div *ngIf="registerForm.get('confirmPassword')?.hasError('required') && registerForm.get('confirmPassword')?.touched">
+                <small class="text-danger"> Potwierdzenie hasła jest wymagane</small>
+            </div>
+            <div *ngIf="registerForm.errors?.['passwordmatcherror'] && registerForm.get('confirmPassword')?.touched">
+                <small class="text-danger">  Hasła nie są takie same</small>
+            </div>
         </div>
         <div class="form-group lead">
             <label for="InputPass" class="p-1">Nazwa użytkownika</label>
-            <input ngModel name="password" type="password" class="form-control" id="InputPass" placeholder="Wpisz swój nick, min. 3 znaki">
+            <input formControlName="displayName" class="form-control" placeholder="Wpisz swój nick, min. 3 znaki"
+            [class.is-invalid]="(registerForm.get('displayName')?.hasError('required') || registerForm.get('displayName')?.hasError('minlength')) && registerForm.get('displayName')?.touched">
+            <div *ngIf="registerForm.get('displayName')?.hasError('required') && registerForm.get('displayName')?.touched">
+                <small class="text-danger"> Nick jest wymagany</small>
+            </div>
+            <div *ngIf="registerForm.get('displayName')?.hasError('minlength') && registerForm.get('displayName')?.touched">
+                <small class="text-danger"> Nick musi składać się przynajmniej z 3 znaków.</small>
+            </div>
+            
         </div>
         <div class="d-grid p-5">
-            <button type="submit" class="btn btn-warning" style="--bs-btn-color: #000;"><strong>Zaloguj się</strong></button>
+            <button type="submit" class="btn btn-warning" style="--bs-btn-color: #000;"><strong>Zarejestruj się</strong></button>
         </div>
     </form>
 </div>

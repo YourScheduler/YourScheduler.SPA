@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Authorization } from 'src/app/Shared/Models/authorization';
+import { AuthorizationRequest } from 'src/app/Shared/Models/authorization';
+import { AuthorizationService } from 'src/app/Shared/Services/authorization.service';
 
 @Component({
   selector: 'app-login',
@@ -7,6 +8,12 @@ import { Authorization } from 'src/app/Shared/Models/authorization';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
- authModel: Authorization = new Authorization("","");
+ authModel: AuthorizationRequest = new AuthorizationRequest("","");
+
+ constructor(private authorizationService: AuthorizationService){}
  
+
+ onSubmit(){
+  this.authorizationService.logIn(this.authModel);
+ }
 }
