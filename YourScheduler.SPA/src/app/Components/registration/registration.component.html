@@ -1,7 +1,8 @@
-<div class="card loginbox">
+<div class="card loginbox" *ngIf="(auth.user$ | async) === null ">
     <div class="card-header bg-warning">
         Zarejestruj się
     </div>
+    <div class="" *ngIf="!isSubmitted">
     <div class="card-body pt-3 lead text-center">
         <p class="card-text">Zarejestruj się i zacznij organizować czas swój i swojego teamu </p>
             <p>z <strong>YourScheduler</strong></p>
@@ -57,8 +58,16 @@
             </div>
             
         </div>
+        <div *ngIf="registerError">
+            <small class="text-danger">{{registerError}}</small>
+        </div>
         <div class="d-grid p-5">
             <button type="submit" class="btn btn-warning" style="--bs-btn-color: #000;"><strong>Zarejestruj się</strong></button>
         </div>
     </form>
+    </div>
+    <div class="card-body text-center" *ngIf="isSubmitted">
+        <p class="card-text">Utworzono konto dla adresu email <strong>{{createdAccount}}</strong></p>
+            <p>Potwierdź rejestrację w wiadomości, którą otrzymałeś na wskazany adres!</p>
+    </div>
 </div>

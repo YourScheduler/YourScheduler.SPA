@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class ErrorService {
-  registerError$ = new Subject<string>();
+  public registerError$ = new Subject<string>();
+  public authError$ = new Subject<string>();
   constructor() { }
 }

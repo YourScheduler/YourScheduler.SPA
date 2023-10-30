@@ -9,10 +9,11 @@ import { ErrorService } from './error.service';
 })
 export class AccountService implements OnDestroy {
   registerError: string = '';
+  registerSubmitted$ = new Subject<boolean>();
   destroyed$ = new Subject();
 
-  constructor(private accountEndpoint:AccountEndpointService, private errors: ErrorService) { 
-      this.errors.registerError$.pipe(
+  constructor(private accountEndpoint:AccountEndpointService, private errorsService: ErrorService) { 
+      this.errorsService.registerError$.pipe(
         tap(data => this.registerError = data),
         takeUntil(this.destroyed$)
       )
@@ -23,15 +24,15 @@ export class AccountService implements OnDestroy {
   }
 
   register(form: RegisterModel){
-    this.accountEndpoint.registerUser(form).pipe(
-      tap()
-    )
+    this.accountEndpoint.registerUser(form)
     .subscribe({
       next: (response) =>{
+        this.registerSubmitted$.next(true);
         console.log(response);
       },
       error: error =>{
-        this.errors.registerError$.next(error.error as string);
+        console.log(error);
+        this.errorsService.registerError$.next(error.error.title as string + ': ' + error.error.detail as string);
       }
     });
   }
