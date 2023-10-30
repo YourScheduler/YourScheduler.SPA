@@ -13,7 +13,7 @@ export class RegistrationComponent implements OnInit {
 
   registerForm: FormGroup = new FormGroup({});
   isSubmitted = false;
-  errorMessages: string[] = [];
+  
   
   constructor(private accountService: AccountService, private formBuilder: FormBuilder){
 
@@ -39,7 +39,7 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit(){
     this.isSubmitted = true;
-    this.errorMessages = [];
+    
 
     if(this.registerForm.valid){
       this.accountService.register(this.registerForm.value as RegisterModel)

@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root'
 })
 export class AccountEndpointService {
-  baseURL = `${environment.appUrl}/Account/`;
+  baseURL = `${environment.appUrl}Account/`;
   constructor(private http: HttpClient) { }
 
 

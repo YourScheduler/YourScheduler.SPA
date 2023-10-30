@@ -1,14 +1,26 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { AccountEndpointService } from '../Endpoints/account-endpoint.service';
 import { RegisterModel } from '../Models/Register';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AccountService {
+export class AccountService implements OnDestroy {
+  registerError: string = '';
+  destroyed$ = new Subject();
 
-  constructor(private accountEndpoint:AccountEndpointService) { }
+  constructor(private accountEndpoint:AccountEndpointService, private errors: ErrorService) { 
+      this.errors.registerError$.pipe(
+        tap(data => this.registerError = data),
+        takeUntil(this.destroyed$)
+      )
+      .subscribe();
+  }
+  ngOnDestroy(): void {
+    this.destroyed$.complete();
+  }
 
   register(form: RegisterModel){
     this.accountEndpoint.registerUser(form).pipe(
@@ -19,7 +31,7 @@ export class AccountService {
         console.log(response);
       },
       error: error =>{
-        console.log(error);
+        this.errors.registerError$.next(error.error as string);
       }
     });
   }

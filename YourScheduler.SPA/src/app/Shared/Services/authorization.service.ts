@@ -15,7 +15,14 @@ export class AuthorizationService {
     this.accountEndpoint.signIn(authModel).pipe(
       tap(_ => {})
     )
-    .subscribe();
+    .subscribe({
+      next: (response) =>{
+        console.log(response);
+      },
+      error: error =>{
+        console.log(error);
+      }
+    });
   }
 
   
