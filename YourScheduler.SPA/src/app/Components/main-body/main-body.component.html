@@ -6,6 +6,9 @@
         <div class="col-4">
             <app-registration></app-registration>
         </div>
+        <div class="col-4">
+            <app-all-users *ngIf="(this.auth.user$ | async) != null"></app-all-users>
+        </div>
     </div>
     
     

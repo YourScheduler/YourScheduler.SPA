@@ -1,0 +1,14 @@
+.ysbox
+{
+    max-height: 200px;
+}
+.borderCard
+{   
+    border: 2px solid #999;
+
+}
+.userList {
+    min-height: 100px;
+    max-height: 300px;
+    overflow: hidden auto;
+}

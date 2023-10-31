@@ -8,13 +8,16 @@ import { MainBodyComponent } from './Components/main-body/main-body.component';
 import { LoginComponent } from './Components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './Components/registration/registration.component';
+import { JwtInterceptor } from './Shared/Interceptors/jwtInterceptor';
+import { AllUsersComponent } from './Components/all-users/all-users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainBodyComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    AllUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,9 @@ import { RegistrationComponent } from './Components/registration/registration.co
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,8 +22,13 @@ export class AuthorizationService {
     }
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', 'Bearer ' + jwt);
-
-    return this.accountEndpoint.loadUser(headers); 
+    
+    return this.accountEndpoint.loadUser(headers).subscribe({
+      next: data => {this.userStorage.next(data as AuthorizationResponse); console.log(data)},
+      error: _ => {
+        this.logout();
+      }
+    }); 
   }
 
   logIn(authModel: AuthorizationRequest){
@@ -40,7 +45,8 @@ export class AuthorizationService {
   }
 
   logout(){
-
+    localStorage.removeItem('user');
+    this.userStorage.next(null);
   }
 
   getTokenFromLocalStorage(){

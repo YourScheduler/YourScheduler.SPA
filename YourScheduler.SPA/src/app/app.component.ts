@@ -16,8 +16,11 @@ export class AppComponent implements OnInit{
   }
   private refreshUser(){
     const jwt = this.auth.getTokenFromLocalStorage();
+    
     if(jwt){
-      
+      this.auth.refreshUser(jwt);
+    } else {
+      this.auth.refreshUser(null);
     }
   }
   

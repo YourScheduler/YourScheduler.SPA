@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AuthorizationRequest } from '../Models/authorization';
+import { AuthorizationRequest, AuthorizationResponse } from '../Models/authorization';
 import { HtmlParser } from '@angular/compiler';
 import { RegisterModel } from '../Models/Register';
 import { environment } from 'src/environments/environment.development';
@@ -18,7 +18,7 @@ export class AccountEndpointService {
   }
 
   public loadUser(headers: HttpHeaders){
-    return this.http.get<RegisterModel>(this.baseURL+'loadUser', {headers});
+    return this.http.get<AuthorizationResponse>(this.baseURL+'loadUser', {headers});
   }
 
   public registerUser(user: RegisterModel){
