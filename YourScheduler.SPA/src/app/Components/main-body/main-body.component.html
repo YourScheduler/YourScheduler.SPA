@@ -3,14 +3,14 @@
         <div class="col-4">
             <app-login></app-login>
         </div>
-        <div class="col-auto" *ngIf="(this.auth.user$ | async) != null">
+        <div class="col-auto" *ngIf="(this.auth.user$ | async) === null">
             <app-registration></app-registration>
         </div>
         <div class="col-4" *ngIf="(this.auth.user$ | async) != null">
-            <app-all-users ></app-all-users>
+            <app-all-users></app-all-users>
+        </div>
+        <div class="col-12" *ngIf="(this.auth.user$ | async) != null">
+            <app-team ></app-team>
         </div>
     </div>
-    
-    
-    
 </div>

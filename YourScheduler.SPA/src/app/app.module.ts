@@ -11,6 +11,9 @@ import { RegistrationComponent } from './Components/registration/registration.co
 import { JwtInterceptor } from './Shared/Interceptors/jwtInterceptor';
 import { AllUsersComponent } from './Components/all-users/all-users.component';
 import { LoadingComponent } from './Components/loading/loading.component';
+import { TeamComponent } from './Components/team/team.component';
+import { CreateTeamComponent } from './Components/team/create-team/create-team.component';
+import { TeamManagmentComponent } from './Components/team/team-managment/team-managment.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { LoadingComponent } from './Components/loading/loading.component';
     LoginComponent,
     RegistrationComponent,
     AllUsersComponent,
-    LoadingComponent
+    LoadingComponent,
+    TeamComponent,
+    CreateTeamComponent,
+    TeamManagmentComponent
   ],
   imports: [
     BrowserModule,
