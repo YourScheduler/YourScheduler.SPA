@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './Components/registration/registration.component';
 import { JwtInterceptor } from './Shared/Interceptors/jwtInterceptor';
 import { AllUsersComponent } from './Components/all-users/all-users.component';
+import { LoadingComponent } from './Components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AllUsersComponent } from './Components/all-users/all-users.component';
     MainBodyComponent,
     LoginComponent,
     RegistrationComponent,
-    AllUsersComponent
+    AllUsersComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,7 @@
+.loadingbox
+        {   
+            min-height: 100vh;
+            max-width: device-width;
+            background: #ddd;
+
+        }

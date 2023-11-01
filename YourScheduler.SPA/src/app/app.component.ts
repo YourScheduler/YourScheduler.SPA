@@ -8,11 +8,23 @@ import { AuthorizationService } from './Shared/Services/authorization.service';
 })
 export class AppComponent implements OnInit{
   title = 'YourScheduler.SPA';
+  isLoading = true;
   constructor(private auth: AuthorizationService){
 
   }
   ngOnInit(): void {
+    this.isLoading = true;
     this.refreshUser();
+
+    this.auth.user$.subscribe({
+      next: _=>{
+        this.isLoading = false;
+      },
+      error: _ =>{
+        this.isLoading = false;
+      }
+      
+    })
   }
   private refreshUser(){
     const jwt = this.auth.getTokenFromLocalStorage();
