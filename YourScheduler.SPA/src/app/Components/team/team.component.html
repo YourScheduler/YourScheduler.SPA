@@ -1,10 +1,18 @@
 <div class="ysbox" *ngIf="(auth.user$ | async) != null">
     <div class="card borderCard">
-        <div class="card-header bg-warning">
+        <div class="card-header bg-info">
             Team
         </div>
-    <div>
-        <div class="card-body pt-3 lead text-center">
+    <div class="d-flex">
+        <div class="d-block smallNavMenu" *ngIf="showSmallMenu" (mouseover)="showSmallMenu = true" (mouseleave)="showSmallMenu = false">
+            <app-team-navbar-small *ngIf="showSmallMenu" (mouseover)="showSmallMenu = true" (mouseleave)="showSmallMenu = false"></app-team-navbar-small>
+        </div>
+        <div class="dot" (mouseover)="showSmallMenu = true">
+            <a class="nav-button lead fs-2 mx-2 my-2">
+                <i class="fa-solid fa-bars p-1 "></i>
+            </a>
+        </div>
+        <div class="col-10 card-body pt-3 lead text-center">
             <h5>Witaj <strong>{{(auth.user$ | async)?.displayName}}</strong></h5>
             <p class="card-text">To tak na szybko, żeby zobaczyć czy działa endpoint z autoryzacją</p>
         </div>

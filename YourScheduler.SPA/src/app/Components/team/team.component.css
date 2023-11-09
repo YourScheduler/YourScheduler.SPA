@@ -1,6 +1,6 @@
 .ysbox
 {
-    max-height: 200px;
+    max-height: auto;
 }
 .borderCard
 {   
@@ -11,4 +11,23 @@
     min-height: 100px;
     max-height: 300px;
     overflow: hidden auto;
+}
+.dot {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: 5px;
+    background-color: #228dad;
+    color: white;
+  }
+
+.dot:hover {
+    background-color: #59c0e9;
+}
+.smallNavMenu{
+    position: absolute;
+    padding-top: 60px;
+    background-color: #59c0e9;
 }

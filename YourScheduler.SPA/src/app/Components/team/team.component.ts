@@ -10,6 +10,7 @@ import { TeamService } from 'src/app/Shared/Services/team.service';
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit, OnDestroy {
+  showSmallMenu = false;
   @Input() teamId:number = 0;
   team?: Team | null;
   destroyed$ = new Subject();

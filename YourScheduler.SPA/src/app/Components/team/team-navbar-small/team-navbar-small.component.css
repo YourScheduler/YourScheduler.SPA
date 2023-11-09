@@ -1,0 +1,13 @@
+.smallNavMenu{
+
+    background-color: #59c0e9;
+}
+.nav-button {
+    color: white;
+    text-decoration: none;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    background-color: #59c0e9;
+}

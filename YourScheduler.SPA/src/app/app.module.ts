@@ -14,6 +14,8 @@ import { LoadingComponent } from './Components/loading/loading.component';
 import { TeamComponent } from './Components/team/team.component';
 import { CreateTeamComponent } from './Components/team/create-team/create-team.component';
 import { TeamManagmentComponent } from './Components/team/team-managment/team-managment.component';
+import { TeamNavbarComponent } from './Components/team/team-navbar/team-navbar.component';
+import { TeamNavbarSmallComponent } from './Components/team/team-navbar-small/team-navbar-small.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { TeamManagmentComponent } from './Components/team/team-managment/team-ma
     LoadingComponent,
     TeamComponent,
     CreateTeamComponent,
-    TeamManagmentComponent
+    TeamManagmentComponent,
+    TeamNavbarComponent,
+    TeamNavbarSmallComponent
   ],
   imports: [
     BrowserModule,
